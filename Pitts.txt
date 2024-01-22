@@ -1,0 +1,25 @@
+import numpy as np
+x1=np.array([0,0,1,1])
+x2=np.array([0,1,0,1])
+
+y=np.array([0,0,0,1]) 
+w1=int(input('Enter the weight-1 : ')) 
+w2=int(input('Enter the weight-2 : ')) 
+fx=x1*w1+x2*w2
+print('f(x) : ',fx)
+
+threshold=int(input('Enter the threshold : ')) 
+y_out=(fx>=threshold).astype(int) 
+print(y_out)
+if np.all (y==y_out):
+
+    print('\nThe weights and threshold are correct') 
+else:
+    print('\nChange the weights and threshold')
+    
+
+#AND0001 112
+#OR0111 111
+#NAND1110 -1-1-1
+#NOR1000 -1-10
+#NOT x01 y10 op-10

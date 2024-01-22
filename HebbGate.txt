@@ -1,0 +1,84 @@
+import numpy as np
+x1=np.array([-1,-1,1,1])
+x2=np.array([-1,1,-1,1])
+xb=np.array([1,1,1,1])
+w1=np.array([0,0,0,0])
+w2=np.array([0,0,0,0])
+w3=np.array([0,0,0,0])
+y=np.array([])
+for i in range(4):
+  x=int(input('enter the binary value'))
+  if x==0:
+    y=np.append(y,-1)
+  else:
+    y=np.append(y,1)
+y=np.floor(y)
+rw1=0
+rw2=0
+rwb=0
+k=0
+k1=0
+k2=0
+for i in range(4):
+        rw1=x1[i]*y[i]
+        rw2=x2[i]*y[i]
+        rwb=xb[i]*y[i]
+        w1[i]=k+rw1
+        w2[i]=k1+rw2
+        w3[i]=k2+rwb
+        k=w1[i]
+        k1=w2[i]
+        k2=w3[i]
+print(w1[-1],w2[-1],w3[-1])
+
+#AND0001
+#OR0111
+#NAND1110
+#NOR1000
+#NOT01,10
+
+
+import numpy as np 
+x1=np.array([-1,-1,1,1])
+x2=np.array([-1,1,-1,1])
+
+xb=np.array([1,1,1,1]) 
+print("Enter y:")
+y=[]
+
+for i in range(4): 
+  x=int(input()) 
+  y.append(x)
+y=np.array(y) 
+w1=np.array([0,0,0,0])
+w2=np.array([0,0,0,0])
+wb=np.array([0,0,0,0]) 
+delw1=x1*y 
+delw2=x2*y 
+delwb=xb*y 
+w1[0]=delw1[0] 
+w2[0]=delw2[0] 
+wb[0]=delwb[0]
+for i in range(1,4): 
+  w1[i]=w1[i-1]+delw1[i]
+  w2[i]=w2[i-1]+delw2[i] 
+  wb[i]=wb[i-1]+delwb[i]
+
+print("Final weights:",w1[3],w2[3],wb[3]) 
+y_out=[]
+f=x1*w1[3]+x2*w2[3]+wb[3] 
+t=int(input("Enter theta: ")) 
+for i in range(4):
+  if(f[i]>=t): 
+    y_out.append(1)
+else:
+
+    y_out.append(-1) 
+y_out=np.array(y_out) 
+if(np.all(y_out==y)):
+  print("Correct weights and threshold")
+else:
+  print("Wrong weights and threshold")
+#AND-1-1-11 1
+#OR-1111 1
+#NAND111-1 1

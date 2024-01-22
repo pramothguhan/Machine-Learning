@@ -1,0 +1,13 @@
+import numpy as np
+x1=np.array([[1,1,1],[-1,1,-1],[1,1,1]])
+x2=np.array([[1,-1,1],[-1,1,-1],[1,-1,1]])
+y=np.array([1,-1])
+w=np.zeros(10)
+w[-1]=1
+c=0
+for i in range(3):
+    for j in range(3):
+      w[c]=x1[i,j]*y[0]+x2[i,j]*y[1]
+      w[-1]=x1[i,j]*y[0]+x2[i,j]*y[1]
+      c=c+1
+print(w)
